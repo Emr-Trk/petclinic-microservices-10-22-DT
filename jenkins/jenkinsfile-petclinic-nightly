@@ -80,7 +80,7 @@ pipeline {
             steps {
                 echo 'Creating QA Automation Infrastructure for Dev Environment'
                 sh """
-                    cd infrastructure/dev-k8s-terraform
+                    cd infrastructure/infrastructure/dev-k8s-terraform
                     sed -i "s/mattkey/$ANS_KEYPAIR/g" main.tf
                     terraform init
                     terraform apply -auto-approve
@@ -156,7 +156,7 @@ pipeline {
                 """
             echo 'Tear down the Kubernetes Cluster'
             sh """
-            cd infrastructure/dev-k8s-terraform
+            cd infrastructure/infrastructure/dev-k8s-terraform
             terraform destroy -auto-approve
             """
             echo "Delete existing key pair using AWS CLI"
